@@ -21,6 +21,9 @@ function isPalindrom(str)
 }
 isPalindrom("madam")
 
+// TC: 0(n)
+// SC: 0(1)
+
 // left=0, right=4, str[0]!=str[4]
 // left=1, right=3, str[1]!=str[3]
 // left=2, right=2, str[2]!=str[2]
