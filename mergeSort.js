@@ -35,7 +35,8 @@ function merge(arr, left, mid, right)
  // arr1 =left to mid indices=mid-left+1
  // arr2 =mid+1 to right indices = right-(mid+1)+1 > right-mid
   
-  let n1= mid-left+1, n2=right-mid
+  let n1=mid-left+1;
+  let n2=right-mid;
   
   let arr1 = new Array(n1)
   let arr2 = new Array(n2)
@@ -52,32 +53,34 @@ function merge(arr, left, mid, right)
   
   let idx1=0, idx2=0, k=left;
   
-  while(idx1<=n1 && idx2<=n2)
+  while(idx1<n1 && idx2<n2)
     {
       if(arr1[idx1]<=arr2[idx2])
         {
           arr[k]=arr1[idx1]
+          idx1++
         }
       else{
         arr[k]=arr2[idx2];
+        idx2++
       }
       k++
     }
 
-  while(idx1<=n1)
+  while(idx1<n1)
     {
       arr[k]=arr1[idx1]
       idx1++
       k++
     }
   
-  while(idx2<=n2)
+  while(idx2<n2)
     {
       arr[k]=arr2[idx2]
       idx2++
       k++
     }
-  
+
 }
 
 function mergeSorting(arr, left, right)
@@ -87,14 +90,20 @@ function mergeSorting(arr, left, right)
   let mid = Math.floor((left+right)/2)
   mergeSorting(arr, left, mid)
   mergeSorting(arr, mid+1, right)
- return merge(arr, left, mid, right) 
+ merge(arr, left, mid, right) 
 
 }
 
-let arr=[5,4,1,2,3]
 // Big 0(n*logn)
 
-console.log(mergeSorting(arr,0,arr.length))
+
+(function main(){
+
+let arr=[5,4,1,2,3]
+mergeSorting(arr,0,arr.length-1)
+console.log("Answer: ",arr)
+  
+}())
 
 
 // mergeSorting(arr, 0, 4) > mergeSorting(arr, 0, 2) && mergeSorting(arr, 3, 4)
