@@ -1,0 +1,31 @@
+// palindrome> reverse are same that is palindrome
+// >> civic, radar, level, rotor, kayak, racecar, madam
+
+// how to check each character from left and right..
+
+// for checking is palindrome or not
+function isPalindrom(str)
+{
+  let left=0, right=str.length-1;
+  
+  while(left<=right)
+    {
+      if(str[left]!=str[right])
+        {
+          return false
+        }
+      left++
+      right--
+    }
+  return true
+}
+isPalindrom("madam")
+
+// left=0, right=4, str[0]!=str[4]
+// left=1, right=3, str[1]!=str[3]
+// left=2, right=2, str[2]!=str[2]
+
+Answer: true
+
+
+
