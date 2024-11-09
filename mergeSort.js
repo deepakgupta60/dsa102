@@ -113,3 +113,75 @@ console.log("Answer: ",arr)
 // mergeSorting(arr, 0, 1) > mergeSorting(arr, 0, 0) && mergeSorting(arr, 1, 1)
 
 // mergeSorting(arr, 3, 3) > mergeSorting()
+
+
+(function main()
+{
+  let arr=[5,9,4,3,5];
+  let left=0;
+  let right=arr.length;
+  mergeSort(arr, left, right-1);
+  console.log("Sorted arr: ",arr)
+ // console.log("test") 
+}())
+
+function mergeSort(arr,left,right)
+{
+  if(left>=right) return;
+  
+  let mid = Math.floor((left+right)/2)
+  
+  // console.log("Dividing: ", arr.slice(left, right+1))
+  mergeSort(arr, left, mid)
+  mergeSort(arr, mid+1, right)
+  merge(arr,left,mid, right)
+}
+
+function merge(arr, left, mid, right)
+{
+  let n1=mid-left+1,n2=right-mid;
+  let arr1=new Array(n1)
+  let arr2=new Array(n2)
+  
+  for(let i=0;i<n1;i++)
+    {
+      arr1[i]=arr[left+i]
+    }
+  
+  for(let i=0;i<n2;i++)
+    {
+      arr2[i]=arr[mid+1+i]
+    }
+  
+  let idx1=0, idx2=0, k=left;
+  
+  while(idx1<n1 && idx2<n2)
+    {
+      if(arr1[idx1]<=arr2[idx2])
+        {
+          arr[k]=arr1[idx1]
+          idx1++
+        }
+      else{
+        arr[k]=arr2[idx2]
+        idx2++
+      }
+      k++
+    }
+  
+  while(idx1<n1)
+    {
+      arr[k]=arr1[idx1]
+      idx1++
+      k++
+    }
+  while(idx2<n2)
+    {
+      arr[k]=arr2[idx2]
+      idx2++
+      k++
+    }
+    
+}
+
+
